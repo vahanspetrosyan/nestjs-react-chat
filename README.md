@@ -2,8 +2,8 @@
 This is a simple group live chat
 
 ## Tech Stack
-- Nest JS
-- React JS
+- Nest JS with TypeScript
+- React JS with TypeScript
 - Docker
 
 ## How to install and run project on local machine
