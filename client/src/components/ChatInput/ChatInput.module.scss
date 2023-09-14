@@ -1,0 +1,6 @@
+.input {
+  @apply h-full flex basis-4/5 outline-none px-3;
+}
+.button {
+  @apply h-full flex basis-1/5 justify-center outline-none bg-indigo-600 text-white font-bold text-xl;
+}

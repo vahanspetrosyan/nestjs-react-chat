@@ -1,0 +1,6 @@
+FROM node:18.16.0
+WORKDIR /var/tmp
+COPY .docker/server/entrypoint.sh .docker/entrypoint.sh
+RUN chmod +x .docker/entrypoint.sh
+WORKDIR /var/www
+ENTRYPOINT ["../tmp/.docker/entrypoint.sh"]

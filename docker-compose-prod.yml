@@ -1,0 +1,40 @@
+version: "3"
+name: chat
+services:
+  nginx:
+    container_name: chat-nginx
+    depends_on:
+      - api
+      - client
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./.docker/nginx
+    ports:
+      - "3000:80"
+  api:
+    container_name: chat-api
+    build:
+      dockerfile: .docker/server/Dockerfile
+      context: ./
+    volumes:
+      - api:/var/www/node_modules
+  client:
+    container_name: chat-client
+    depends_on:
+      - api
+    stdin_open: true
+    environment:
+      - VITE_API_ENDPOINT=http://localhost:3000
+      - GENERATE_SOURCEMAP=false
+    build:
+      dockerfile: .docker/client/Dockerfile
+      context: ./
+      args:
+        - VITE_API_ENDPOINT=http://localhost:3000
+        - GENERATE_SOURCEMAP=true
+    volumes:
+      - client:/var/www/node_modules
+volumes:
+  client:
+  api:

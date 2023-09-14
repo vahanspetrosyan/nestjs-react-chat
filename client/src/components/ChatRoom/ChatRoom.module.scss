@@ -1,0 +1,58 @@
+.container {
+  @apply h-2/3 lg:w-2/4 sm:w-2/4 mx-auto my-auto bg-white rounded-xl shadow-lg;
+  .header {
+    @apply h-12 px-10 rounded-md bg-black relative cursor-pointer;
+    p {
+      @apply block  py-2 text-white leading-10;
+    }
+  }
+  .chatWrapper {
+    @apply h-5/6 border  border-black bg-white relative;
+    .chat {
+      @apply h-full w-full overflow-y-scroll overflow-x-hidden snap-none;
+      .messageWrapper {
+        @apply h-auto flex p-2 justify-start;
+        .message {
+          .content {
+            @apply h-auto w-auto min-h-[40px] rounded text-white flex text-center p-1 break-words font-semibold;
+            @apply bg-orange-300 justify-start;
+          }
+          .username {
+            @apply h-auto flex mb-1 font-bold justify-start;
+          }
+          .time {
+            @apply text-xs;
+          }
+        }
+        &.my {
+          @apply justify-end;
+          .message {
+            .content {
+              @apply bg-blue-600 justify-start;
+            }
+          }
+        }
+        &.system {
+          @apply justify-center;
+          .message {
+            @apply flex items-center gap-2 p-1 content-center bg-emerald-500 rounded;
+            .username {
+              @apply hidden;
+            }
+            .content {
+              @apply bg-none m-0 p-0 flex items-center;
+              background: unset;
+            }
+            .time {
+              @apply text-white text-xs	;
+            }
+          }
+        }
+
+      }
+    }
+  }
+  .footer {
+    @apply h-10 border border-black flex border-t-0;
+  }
+}
